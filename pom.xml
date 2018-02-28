@@ -9,7 +9,7 @@
     <version>1.0</version>
 
     <properties>
-        <spring.version>3.2.13.RELEASE</spring.version>
+        <spring.version>5.0.3.RELEASE</spring.version>
         <junit.version>4.12</junit.version>
         <mockito.version>2.2.12</mockito.version>
         <commons.io.version>2.4</commons.io.version>
@@ -80,6 +80,14 @@
             <artifactId>aspectjrt</artifactId>
             <version>${aspectj.version}</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api -->
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>1.2</version>
+        </dependency>
+
     </dependencies>
 
 

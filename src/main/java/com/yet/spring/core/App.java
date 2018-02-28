@@ -3,9 +3,12 @@ package com.yet.spring.core;
 import com.yet.spring.core.beans.Client;
 import com.yet.spring.core.beans.Event;
 import com.yet.spring.core.beans.EventType;
+import com.yet.spring.core.config.AppConfig;
 import com.yet.spring.core.loggers.EventLogger;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Field;
 import java.util.Map;
@@ -34,7 +37,7 @@ public class App {
     }
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+        ConfigurableApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
         ctx.registerShutdownHook();
         App app = (App) ctx.getBean("app");
 

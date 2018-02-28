@@ -9,8 +9,6 @@ import org.aspectj.lang.annotation.Pointcut;
 @Aspect
 public class LoggingAspect {
 
-
-
     @Pointcut("execution(* *.logEvent(..))")
     private void allLogEventMethods() {}
 

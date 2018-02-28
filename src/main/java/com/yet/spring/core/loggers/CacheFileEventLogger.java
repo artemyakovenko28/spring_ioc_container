@@ -2,22 +2,30 @@ package com.yet.spring.core.loggers;
 
 import com.yet.spring.core.beans.Event;
 import org.apache.commons.io.FileUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.PreDestroy;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class CacheFileEventLogger extends FileEventLogger {
 
     private int cacheSize;
+
     private List<Event> cache;
 
-    public CacheFileEventLogger(String fileName, int cacheSize) {
+    public CacheFileEventLogger(@Value("target/events_log.txt") String fileName,
+                                @Value("5") int cacheSize) {
         super(fileName);
         this.cacheSize = cacheSize;
         this.cache = new ArrayList<>(cacheSize);
     }
 
+    @PreDestroy
     private void destroy() {
         if (!cache.isEmpty()) {
             writeEventsFromCache();
